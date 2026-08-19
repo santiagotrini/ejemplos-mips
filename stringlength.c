@@ -2,7 +2,9 @@
 #include <string.h>
 
 int stringlength(char *s) {
-  // implementar esta función
+  int i = 0;
+  while (s[i] != 0) i++;
+  return i;
 }
 
 int main(void) {
