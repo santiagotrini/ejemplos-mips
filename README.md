@@ -12,7 +12,7 @@ Una función que recibe dos argumentos enteros y devuelve lo siguiente.
 < 0 & \text{si } a < b 
 \end{cases}
 ```
-
+<br>
 
 2. Segundo ejercicio `stringlength.c` y `stringlength.s`.
 
