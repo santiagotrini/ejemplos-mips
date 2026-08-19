@@ -13,6 +13,7 @@ loop:
   j       loop
 ret:
   jr      $ra
+  
 main:
   la      $a0, palabra
   jal     strlen
