@@ -4,11 +4,20 @@ palabra: .asciiz "hola"
 
 .text
 strlen:
-  # implementar strlen aca
+  li      $v0, 0
+loop:
+  lb      $t0, 0($a0)
+  beq     $t0, $zero, ret
+  addi    $v0, $v0, 1
+  addi    $a0, $a0, 1
+  j       loop
+ret:
   jr      $ra
 main:
   la      $a0, palabra
   jal     strlen
-  # imprimir cantidad de letras
+  move    $a0, $v0
+  li      $v0, 1
+  syscall
   li      $v0, 10
   syscall
