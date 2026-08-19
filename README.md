@@ -35,3 +35,8 @@ atoi("1234") // devuelve 1234 (tipo int)
 atoi("000")  // devuelve 0    (tipo int)
 atoi("-12")  // devuelve -12  (tipo int)
 ```
+
+4. Cuarto ejercicio `palindrome.c` y `palindrome.s`.
+
+Una palabra es palíndromo si se lee igual desde la izquierda o la derecha. Ejemplos comunes de palíndromos son: "neuquen", "reconocer", "rapar", "salas", "oso" y "radar".
+Implementar una función que devuelva uno si la palabra es palíndromo o cero de lo contrario.
