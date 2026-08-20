@@ -40,3 +40,15 @@ atoi("-12")  // devuelve -12  (tipo int)
 
 Una palabra es palíndromo si se lee igual desde la izquierda o la derecha. Ejemplos comunes de palíndromos son: "neuquen", "reconocer", "rapar", "salas", "oso" y "radar".
 Implementar una función que devuelva uno si la palabra es palíndromo o cero de lo contrario.
+
+Para este ejercicio conviene reutilizar la función `strlen()` que definieron en el ejercicio 2. El único problema con eso es que cuando llaman a `strlen()` dentro de `palindrome()` pierden la dirección de retorno a `main()`. A menos que guarden esa dirección en la pila de llamadas.
+
+5. Quinto ejercicio. Hay que implementar la función distancia al cuadrado:
+
+```math
+D^2 = (x_2 - x_1)^2 + (y_2 - y_1)^2
+```
+
+<br>
+
+Para eso implementar dos funciones, $D^2$ y $f(x)=x^2$ en el código. El programa debe comenzar en `main()`, desde `main()` llamar a `D()` y desde `D()` llamar dos veces a `square()`. Lo queremos hacer así a propósito para entender como funciona la *call stack* (pila de llamadas).
