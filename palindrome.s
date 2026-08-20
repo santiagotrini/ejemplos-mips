@@ -1,15 +1,12 @@
 # escribir aca el ejercicio en MIPS
 .data
-palabra: .asciiz "fischer"
+palabra: .asciiz "reconocer"
 
 .text
 palindrome:
-  addi    $sp, $sp, -8
+  addi    $sp, $sp, -4
   sw      $ra, 0($sp)
-  sw      $a0, 4($sp)
   jal     strlen
-  lw      $a0, 4($sp)
-  addi    $sp, $sp, 4
   move    $s0, $v0      # $s0 = strlen(palabra)
   add     $s1, $a0, $s0 # $s1 = puntero derecho
   addi    $s1, $s1, -1  
@@ -33,6 +30,8 @@ ret_palindrome:
   jr      $ra
 
 strlen:
+  addi    $sp, $sp, -4
+  sw      $a0, 0($sp)
   li      $v0, 0
 loop:
   lb      $t0, 0($a0)
@@ -41,6 +40,8 @@ loop:
   addi    $a0, $a0, 1
   j       loop
 ret:
+  lw      $a0, 0($sp)
+  addi    $sp, $sp, 4
   jr      $ra
   
 main:
