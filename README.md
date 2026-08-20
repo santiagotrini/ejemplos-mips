@@ -52,3 +52,156 @@ D^2 = (x_2 - x_1)^2 + (y_2 - y_1)^2
 <br>
 
 Para eso implementar dos funciones, $D^2$ y $f(x)=x^2$ en el código. El programa debe comenzar en `main()`, desde `main()` llamar a `D()` y desde `D()` llamar dos veces a `square()`. Lo queremos hacer así a propósito para entender como funciona la *call stack* (pila de llamadas).
+
+## Convención de llamadas en MIPS
+
+La **convención de llamadas** establece reglas para que las funciones puedan comunicarse entre sí correctamente: cómo se pasan los parámetros, dónde se devuelve el resultado y qué registros debe preservar una función.
+
+### Registros principales
+
+* `$a0 - $a3`: se utilizan para **pasar los primeros 4 argumentos** a una función.
+* `$v0 - $v1`: se utilizan para **devolver valores** desde una función.
+* `$ra`: contiene la **dirección de retorno** después de un `jal`.
+* `$sp`: apunta al **top of stack** (tope de la pila).
+* `$t0 - $t9`: registros **temporales**. Una función puede modificarlos sin necesidad de preservarlos.
+* `$s0 - $s7`: registros **guardados** (*saved registers*). Si una función los modifica, debe guardar su valor original y restaurarlo antes de retornar.
+
+### Llamar a una función
+
+Para llamar a una función se utiliza:
+
+```asm
+jal funcion
+```
+
+`jal` guarda en `$ra` la dirección de la instrucción siguiente y salta a `funcion`.
+
+La función retorna mediante:
+
+```asm
+jr $ra
+```
+
+### Ejemplo
+
+```asm
+# llamar a suma(10, 20)
+li   $a0, 10
+li   $a1, 20
+jal  suma
+
+# resultado en $v0
+```
+
+La función:
+
+```asm
+suma:
+    add  $v0, $a0, $a1
+    jr   $ra
+```
+
+En este caso:
+
+* `$a0 = 10` → primer parámetro
+* `$a1 = 20` → segundo parámetro
+* `$v0 = 30` → valor retornado
+* `$ra` → dirección a la que debe regresar la función
+
+### ¿Por qué necesitamos el stack?
+
+Cuando una función necesita hacer otra llamada mediante `jal`, el valor de `$ra` puede ser sobrescrito. Por eso, cuando corresponde, debemos **guardar `$ra` en el stack** y recuperarlo antes de retornar.
+
+```asm
+funcion:
+    addi $sp, $sp, -4
+    sw   $ra, 0($sp)
+
+    jal  otra_funcion
+
+    lw   $ra, 0($sp)
+    addi $sp, $sp, 4
+
+    jr   $ra
+```
+
+> **Idea clave:** la convención de llamadas permite que distintas funciones puedan trabajar juntas sin pisarse los datos importantes. Antes de escribir una función, preguntate: **¿qué recibo?, ¿dónde lo recibo?, ¿qué debo preservar?, ¿qué devuelvo y dónde?**
+
+## Conceptos revisados
+
+* **Registros MIPS**
+
+  * Uso de registros temporales (`$t0-$t9`) y de argumentos/retorno (`$a0-$a3`, `$v0-$v1`).
+  * Movimiento de datos entre registros con `move`.
+
+* **Operaciones aritméticas y lógicas**
+
+  * `add`, `addi`, `sub`, `mul`, `div`.
+  * Comparaciones y operaciones lógicas.
+  * Uso de `li` para cargar valores inmediatos.
+
+* **Estructuras de control**
+
+  * Condicionales: `beq`, `bne`.
+  * Construcción de `if / else`.
+  * Construcción de ciclos (`while`, `for`) mediante saltos.
+
+* **Funciones**
+
+  * Declaración y llamada de funciones con `jal`.
+  * Retorno mediante `jr $ra`.
+  * Paso de parámetros mediante registros.
+  * Retorno de valores mediante `$v0`.
+
+* **Convención de llamadas**
+
+  * Uso correcto de registros según su propósito.
+  * Registros temporales vs. registros que deben preservarse.
+  * Importancia de respetar la convención al llamar a otras funciones.
+
+* **Call Stack**
+
+  * Uso de `$sp` para manejar la pila.
+  * Reservar y liberar espacio en el stack.
+  * Guardar y recuperar registros.
+  * Preservar `$ra` cuando una función realiza llamadas a otras funciones.
+
+* **Arrays y memoria**
+
+  * Acceso a posiciones de memoria mediante direcciones.
+  * Cálculo de offsets.
+  * Diferencia entre dirección y valor almacenado.
+  * Uso de `lw` / `sw`.
+
+* **Strings**
+
+  * Representación de strings como secuencias de bytes.
+  * Terminador `\0`.
+  * Recorrido carácter por carácter.
+  * Uso de `lb` para leer caracteres.
+  * Comparación de caracteres.
+
+* **Conversión de tipos / caracteres**
+
+  * Diferencia entre un carácter y su representación ASCII.
+  * Conversión de caracteres numéricos (`'0'`–`'9'`) a valores enteros.
+  * Construcción de números a partir de un string.
+
+* **Relación C → MIPS**
+
+  * Traducción de variables a registros/memoria.
+  * Traducción de `if`, `while` y funciones.
+  * Traducción de acceso a arrays y strings.
+  * Identificación de qué operaciones realiza realmente el compilador a nivel de ensamblador.
+
+* **Debugging**
+
+  * Seguir la ejecución instrucción por instrucción.
+  * Observar registros y memoria.
+  * Verificar valores de `$sp` y `$ra`.
+  * Detectar errores de direcciones, offsets y saltos.
+
+### Para repasar antes de una evaluación
+
+Deberías poder **leer código MIPS y explicar qué hace**, traducir código sencillo de **C a MIPS**, seguir el contenido de los **registros y la memoria** durante la ejecución y escribir funciones respetando la **convención de llamadas y el uso del stack**.
+
