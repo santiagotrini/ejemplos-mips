@@ -1,5 +1,7 @@
 # Ejemplos de MIPS
 
+## Ejercicios
+
 1. Primer ejercicio `compare.c` y `compare.s`.
 
 Una función que recibe dos argumentos enteros y devuelve lo siguiente.
@@ -53,6 +55,20 @@ D^2 = (x_2 - x_1)^2 + (y_2 - y_1)^2
 
 Para eso implementar dos funciones, $D^2$ y $f(x)=x^2$ en el código. El programa debe comenzar en `main()`, desde `main()` llamar a `D()` y desde `D()` llamar dos veces a `square()`. Lo queremos hacer así a propósito para entender como funciona la *call stack* (pila de llamadas).
 
+6. Sexto ejercicio. Una función que cuente en un *string* la cantidad de ocurrencias de un caracter determinado: `int char_count(char *s, char c)`.
+
+```c
+count_char("banana", 'a') // → 3
+count_char("papoi", 'p') // → 2
+```
+
+7. Séptimo ejercicio. Hay que implementar una función `int wc(char *s)` que cuente palabras (delimitadas por espacios) en un *string*.
+
+```c
+wc("hola    mundo!") // → 2
+wc("Oh! Bello, papaguena! Tu le bella comme le papaya") // → 9
+```
+
 ## Convención de llamadas en MIPS
 
 La **convención de llamadas** establece reglas para que las funciones puedan comunicarse entre sí correctamente: cómo se pasan los parámetros, dónde se devuelve el resultado y qué registros debe preservar una función.
@@ -70,7 +86,7 @@ La **convención de llamadas** establece reglas para que las funciones puedan co
 
 Para llamar a una función se utiliza:
 
-```asm
+```mips
 jal funcion
 ```
 
@@ -78,13 +94,13 @@ jal funcion
 
 La función retorna mediante:
 
-```asm
+```mips
 jr $ra
 ```
 
 ### Ejemplo
 
-```asm
+```mips
 # llamar a suma(10, 20)
 li   $a0, 10
 li   $a1, 20
@@ -95,7 +111,7 @@ jal  suma
 
 La función:
 
-```asm
+```mips
 suma:
     add  $v0, $a0, $a1
     jr   $ra
@@ -112,7 +128,7 @@ En este caso:
 
 Cuando una función necesita hacer otra llamada mediante `jal`, el valor de `$ra` puede ser sobrescrito. Por eso, cuando corresponde, debemos **guardar `$ra` en el stack** y recuperarlo antes de retornar.
 
-```asm
+```mips
 funcion:
     addi $sp, $sp, -4
     sw   $ra, 0($sp)
