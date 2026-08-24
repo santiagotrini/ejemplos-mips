@@ -106,6 +106,26 @@ printf("%d\n", strcmp("balatu","bello"));   // -1
 printf("%d\n", strcmp("aaa","aaa"));        //  0
 ``` 
 
+10. **Ejercicio diez** ahora sí uno fácil. Pasar el siguiente código de C a MIPS. Practicar el uso de la pila para preservar registros (*register spilling*).
+
+```c
+int do_math(int a, int b) {
+  return 2*a + 3*b;
+}
+
+int init(char *s) {
+  int length = strlen(s);
+  return do_math(length, length) + 1;
+}
+
+int main(void) {
+  char *s = "Sayas";
+  int result = init(s);
+  printf("%d\n", result);
+  return 0;
+}
+```
+
 67. **Ejercicio six seven** en este ejercicio pensado especialmente para mi alumno Sayas hay que escribir en MIPS la siguiente función partida.
 
 ```math
