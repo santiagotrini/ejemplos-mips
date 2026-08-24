@@ -94,6 +94,18 @@ x,y &\in \mathbb{Z}
 
 <br>
 
+9. **Noveno ejercicio** algo así voy a poner en la prueba. Implementar un clon de la función `int strcmp(char *s, char *t)` de C. La función devuelve cero si los dos *strings* son iguales. Devuelve un número positivo si el primero es mayor y negativo si es menor. El orden de las cadenas es el llamado orden lexicográfico u orden del diccionario.
+
+Ejemplo en C:
+
+```c
+printf("%d\n", strcmp("arbol","burro"));    // -1
+printf("%d\n", strcmp("zorro","hola"));     //  1
+printf("%d\n", strcmp("banana","bananas")); // -1
+printf("%d\n", strcmp("balatu","bello"));   // -1
+printf("%d\n", strcmp("aaa","aaa"));        //  0
+``` 
+
 ## Convención de llamadas en MIPS
 
 La **convención de llamadas** establece reglas para que las funciones puedan comunicarse entre sí correctamente: cómo se pasan los parámetros, dónde se devuelve el resultado y qué registros debe preservar una función.
