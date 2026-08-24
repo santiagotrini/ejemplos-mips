@@ -76,14 +76,20 @@ f(x, y) =
 \begin{cases} 
 g(x,y) & \text{si } x < 0 \\
 h(x) & \text{si } x = y \\
-i(x,y) & \text{si } y > x 
+i(x,y) & \text{si } y > x \\
+-12 & \text{en otro caso} 
 \end{cases}
 ```
 
 Con
 
 ```math
-x,y \in \mathbb{Z}, g(x,y) = x + y, h(x) = x^2, i(x,y) = xy
+\begin{align*}
+g(x,y) &= x + y \\
+h(x) &= x^2 \\
+i(x,y) &= xy \\
+x,y &\in \mathbb{Z} 
+\end{align*}
 ```
 
 <br>
