@@ -69,6 +69,25 @@ wc("hola    mundo!") // → 2
 wc("Oh! Bello, papaguena! Tu le bella comme le papaya") // → 9
 ```
 
+8. **Octavo ejercicio** hay que implementar estas funciones inventadas en MIPS.
+
+```math
+f(x, y) = 
+\begin{cases} 
+g(x,y) & \text{si } x < 0 \\
+h(x) & \text{si } x = y \\
+i(x,y) & \text{si } y > x 
+\end{cases}
+```
+
+Con
+
+```math
+x,y \in \mathbb{Z}, g(x,y) = x + y, h(x) = x^2, i(x,y) = xy
+```
+
+<br>
+
 ## Convención de llamadas en MIPS
 
 La **convención de llamadas** establece reglas para que las funciones puedan comunicarse entre sí correctamente: cómo se pasan los parámetros, dónde se devuelve el resultado y qué registros debe preservar una función.
