@@ -106,7 +106,7 @@ printf("%d\n", strcmp("balatu","bello"));   // -1
 printf("%d\n", strcmp("aaa","aaa"));        //  0
 ``` 
 
-67. **Ejercicio six seven** en este ejercicio pensado especialmente para mi alumno Sayas hay que escribir en MIPS la siguiente función partida.
+67. **Ejercicio six seven** en este ejercicio pensado especialmente para mi alumno Sayas. Hay que escribir en MIPS la siguiente función partida.
 
 ```math
 f(x, y, z) = 
@@ -114,7 +114,7 @@ f(x, y, z) =
 x+yz   & \text{si } x + y > 0 \\
 g(x,z) & \text{si } x + y = 0 \\
 h(x,y) & \text{si } x + y < 0 \\
-g(h(x,y),h(x,y)) & en caso contrario
+g(h(x,y),h(x,y)) & \text{en caso contrario}
 \end{cases}
 ```
 
