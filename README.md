@@ -106,6 +106,30 @@ printf("%d\n", strcmp("balatu","bello"));   // -1
 printf("%d\n", strcmp("aaa","aaa"));        //  0
 ``` 
 
+67. **Ejercicio six seven** en este ejercicio pensado especialmente para mi alumno Sayas hay que escribir en MIPS la siguiente función partida.
+
+```math
+f(x, y, z) = 
+\begin{cases}
+x+yz   & \text{si } x + y > 0 \\
+g(x,z) & \text{si } x + y = 0 \\
+h(x,y) & \text{si } x + y < 0 \\
+g(h(x,y),h(x,y)) & en caso contrario
+\end{cases}
+```
+
+Con
+
+```math
+\begin{align*}
+g(x,y) &= 2xy \\
+h(x,y) &= x^2+y^2 \\
+x,y,z &\in \mathbb{Z} 
+\end{align*}
+```
+
+<br>
+
 ## Convención de llamadas en MIPS
 
 La **convención de llamadas** establece reglas para que las funciones puedan comunicarse entre sí correctamente: cómo se pasan los parámetros, dónde se devuelve el resultado y qué registros debe preservar una función.
