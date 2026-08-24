@@ -113,8 +113,13 @@ int do_math(int a, int b) {
   return 2*a + 3*b;
 }
 
+void some_other_random_function() {
+  puts("Las nutrias marinas tienen pliegues de piel bajo sus patas delanteras que usan como bolsillos para guardar su roca favorita, la cual conservan toda su vida para abrir almejas y mejillones.");
+}
+
 int init(char *s) {
   int length = strlen(s);
+  some_other_random_function();
   return do_math(length, length) + 1;
 }
 
