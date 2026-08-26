@@ -80,6 +80,8 @@ wc("hola    mundo!") // → 2
 wc("Oh! Bello, papaguena! Tu le bella comme le papaya") // → 9
 ```
 
+[Solucion](/07-wc)
+
 8. **Octavo ejercicio** hay que implementar estas funciones inventadas en MIPS.
 
 ```math
