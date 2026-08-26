@@ -146,6 +146,20 @@ int main(void) {
 
 [Solucion](/10-diez)
 
+11. **Ejercicio once** una función que cambie en un *string* las mayúsculas a minúsculas dejando todo lo demás como está. La función no devuelve nada, cambia el *string* directamente en memoria.
+
+```c
+tolower("BananoNina!") // "bananonina!"
+tolower("¡Luk  aT Tu!", 'p') // ¡luk  at tu!
+```
+
+12. **Ejercicio doce** una función que decida si dos *strings* son anagramas.
+
+```c
+is_anagram("roma", "amor"); // 1
+is_anagram("casa", "cosa"); // 0
+```
+
 67. **Ejercicio six seven** en este ejercicio pensado especialmente para mi alumno Sayas hay que escribir en MIPS la siguiente función partida.
 
 ```math
