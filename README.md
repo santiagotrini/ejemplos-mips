@@ -150,7 +150,7 @@ int main(void) {
 
 ```c
 tolower("BananoNina!") // "bananonina!"
-tolower("¡Luk  aT Tu!", 'p') // ¡luk  at tu!
+tolower("¡Luk  aT Tu!") // ¡luk  at tu!
 ```
 
 12. **Ejercicio doce** una función que decida si dos *strings* son anagramas.
