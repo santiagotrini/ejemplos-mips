@@ -119,6 +119,8 @@ printf("%d\n", strcmp("balatu","bello"));   // -1
 printf("%d\n", strcmp("aaa","aaa"));        //  0
 ``` 
 
+[Solucion](/09-strcmp)
+
 10. **Ejercicio diez** ahora sí uno fácil. Pasar el siguiente código de C a MIPS. Practicar el uso de la pila para preservar registros (*register spilling*).
 
 ```c
@@ -152,6 +154,8 @@ int main(void) {
 tolower("BananoNina!") // "bananonina!"
 tolower("¡Luk  aT Tu!") // ¡luk  at tu!
 ```
+
+[Solucion](/11-tolower)
 
 12. **Ejercicio doce** una función que decida si dos *strings* son anagramas.
 
